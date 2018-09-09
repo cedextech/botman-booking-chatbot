@@ -9,15 +9,12 @@ class DriverServiceProvider extends ServiceProvider
 {
     /**
      * The drivers that should be loaded to
-     * use with BotMan
+     * use with BotMan.
      *
      * @var array
      */
     protected $drivers = [];
 
-    /**
-     * @return void
-     */
     public function boot()
     {
         parent::boot();

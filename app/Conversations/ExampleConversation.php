@@ -11,11 +11,11 @@ use BotMan\BotMan\Messages\Conversations\Conversation;
 class ExampleConversation extends Conversation
 {
     /**
-     * First question
+     * First question.
      */
     public function askReason()
     {
-        $question = Question::create("Huh - you woke me up. What do you need?")
+        $question = Question::create('Huh - you woke me up. What do you need?')
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
             ->addButtons([
@@ -25,7 +25,7 @@ class ExampleConversation extends Conversation
 
         return $this->ask($question, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
-                if ($answer->getValue() === 'joke') {
+                if ('joke' === $answer->getValue()) {
                     $joke = json_decode(file_get_contents('http://api.icndb.com/jokes/random'));
                     $this->say($joke->value->joke);
                 } else {
@@ -36,7 +36,7 @@ class ExampleConversation extends Conversation
     }
 
     /**
-     * Start the conversation
+     * Start the conversation.
      */
     public function run()
     {
